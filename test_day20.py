@@ -45,7 +45,3 @@ class TestDay20(unittest.TestCase):
         self.assertEqual(str(context.exception),
                          'post_id must be greater than 0'
                          )
-
-
-if __name__ == '__main__':
-    unittest.main()
