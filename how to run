@@ -1,0 +1,2 @@
+pytest test_day20.py::TestDay20
+to run the tests
