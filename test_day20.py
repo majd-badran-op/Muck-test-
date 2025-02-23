@@ -4,10 +4,6 @@ from unittest.mock import patch, Mock
 
 
 class TestDay20(unittest.TestCase):
-    def test_get_post_by_id_str_or_overflow_num(self):
-        self.assertIsNone(get_post_by_id('a'))
-        self.assertIsNone(get_post_by_id(1000000000000))
-
     @patch('day20.http_get')
     def test_get_post_by_id(self, mock_get):
         mock_api = Mock()

@@ -32,7 +32,3 @@ def get_post_by_id_with_validation(post_id: int) -> dict[str, Any] | None:
         return response.json()
     except HTTPError:
         return None
-
-
-result = get_post_by_id("a")
-print(result)
