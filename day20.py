@@ -11,7 +11,7 @@ def get_post_by_id(post_id: int) -> dict[str, Any]:
         response.raise_for_status()
         return response.json()
     except HTTPError:
-        raise ValueError(f'Failed to fetch post with ID {post_id}')
+        raise ValueError(f'Wrong id {post_id}')
 
 
 def get_posts_by_user_id(user_id: int) -> dict[str, Any] | None:
