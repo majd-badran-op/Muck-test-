@@ -4,25 +4,14 @@ from unittest.mock import patch, Mock
 
 
 class TestDay20(unittest.TestCase):
-    @patch('day20.http_get')
-    def test_get_post_by_id(self, mock_get):
-        mock_api = Mock()
-        mock_api.json.return_value = {
+    demo = {
             'userId': 1,
             'id': 1,
             'title': 'sunt aut facere repellat provident',
             'body': 'quia et suscipit suscipit recusanda'
         }
-        mock_get.return_value = mock_api
-        result = get_post_by_id(1)
-        self.assertEqual(result['id'], 1)
-        self.assertEqual(result['title'], 'sunt aut facere repellat provident')
-        self.assertEqual(result['body'], 'quia et suscipit suscipit recusanda')
 
-    @patch('day20.http_get')
-    def test_get_posts_by_user_id(self, mock_get):
-        mock_api = Mock()
-        mock_api.return_value.json.return_value = [{
+    demo2 = [{
             'userId': 1,
             'id': 2,
             'title': 'sunt aut facere repellat provident',
@@ -33,6 +22,20 @@ class TestDay20(unittest.TestCase):
             'title': 'sunt aut facere repellat provident',
             'body': 'quia et suscipit suscipit recusanda'
         }]
+    @patch('day20.http_get')
+    def test_get_post_by_id(self, mock_get):
+        mock_api = Mock()
+        mock_api.json.return_value = demo
+        mock_get.return_value = mock_api
+        result = get_post_by_id(1)
+        self.assertEqual(result['id'], 1)
+        self.assertEqual(result['title'], 'sunt aut facere repellat provident')
+        self.assertEqual(result['body'], 'quia et suscipit suscipit recusanda')
+
+    @patch('day20.http_get')
+    def test_get_posts_by_user_id(self, mock_get):
+        mock_api = Mock()
+        mock_api.return_value.json.return_value = demo2
         mock_get.return_value = mock_api
         result1 = get_posts_by_user_id(1)
         result2 = get_post_by_id_with_validation(1)
